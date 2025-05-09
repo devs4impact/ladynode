@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ladynodedb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - ladynode-network
+    ports:
+      - "5432:5432"
+
+networks:
+  ladynode-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
